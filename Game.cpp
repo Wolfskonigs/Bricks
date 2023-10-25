@@ -122,4 +122,13 @@ void Game::CheckCollision()
 	}
 
 	// TODO #7 - If ball touches bottom of window, pause ball and display defeat text with R to reset
+
+	if (ball.y_position >= WINDOW_HEIGHT)
+	{
+		ball.x_velocity = 0;
+		ball.y_velocity = 0;
+
+		std::cout << "\n\n\n";
+		std::cout << "\t\t\t You Lose! Press 'R' to play again.\n";
+	}
 }
