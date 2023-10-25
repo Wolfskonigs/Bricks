@@ -98,7 +98,10 @@ void Game::CheckCollision()
 			ball.y_velocity *= -1;																				// simulates ball bounce
 
 			// TODO #5 - If the ball hits the same brick 3 times (color == black), remove it from the vector
-
+			if (bricks[index].color == ConsoleColor::Black)
+			{
+				bricks.erase(bricks.begin() + index);
+			}
 		}
 	}
 
