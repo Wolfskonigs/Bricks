@@ -94,7 +94,19 @@ void Game::CheckCollision()
 	{
 		if (brick[index].Contains(ball.x_position + ball.x_velocity, ball.y_position + ball.y_velocity))		// checks the current brick contains the new position of the ball
 		{
-			brick[index].color = ConsoleColor(brick[index].color - 1);											// changes the color of the brick
+			if (brick[index].color == ConsoleColor::DarkGreen)													// changes the color of the brick
+			{
+				brick[index].color = ConsoleColor::DarkYellow;
+			}
+			else if (brick[index].color == ConsoleColor::DarkYellow)
+			{
+				brick[index].color = ConsoleColor::Red;
+			}
+			else if (brick[index].color == ConsoleColor::Red)
+			{
+				brick[index].color = ConsoleColor::Black;
+			}
+													
 			ball.y_velocity *= -1;																				// simulates ball bounce
 
 			// TODO #5 - If the ball hits the same brick 3 times (color == black), remove it from the vector
