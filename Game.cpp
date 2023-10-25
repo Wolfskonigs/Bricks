@@ -74,7 +74,7 @@ void Game::Render() const
 {
 	Console::Lock(true);
 	Console::Clear();
-	
+
 	paddle.Draw();
 	ball.Draw();
 
@@ -82,6 +82,17 @@ void Game::Render() const
 	for (int index = 0; index < brick.size(); ++index)								// Loops through the vector of bricks to draw each brick
 	{
 		brick[index].Draw();
+	}
+
+	if (currentState == WON)
+	{
+		std::cout << "\n\n\n";
+		std::cout << "\t\t\t You Win! Press 'R' to play again.\n";
+	}
+	else if (currentState == LOST)
+	{
+		std::cout << "\n\n\n";
+		std::cout << "\t\t\t You Lose! Press 'R' to play again.\n";
 	}
 
 	Console::Lock(false);
@@ -106,7 +117,7 @@ void Game::CheckCollision()
 			{
 				brick[index].color = ConsoleColor::Black;
 			}
-													
+
 			ball.y_velocity *= -1;																				// simulates ball bounce
 
 			// TODO #5 - If the ball hits the same brick 3 times (color == black), remove it from the vector
@@ -121,11 +132,9 @@ void Game::CheckCollision()
 	// TODO #6 - If no bricks remain, pause ball and display victory text with R to reset
 	if (brick.empty())
 	{
+		currentState = WON;
 		ball.x_velocity = 0;
 		ball.y_velocity = 0;
-
-		std::cout << "\n\n\n";
-		std::cout << "\t\t\t You win! Press 'R' to play again.\n";
 	}
 
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
@@ -137,10 +146,8 @@ void Game::CheckCollision()
 
 	if (ball.y_position >= WINDOW_HEIGHT)
 	{
+		currentState = LOST;
 		ball.x_velocity = 0;
 		ball.y_velocity = 0;
-
-		std::cout << "\n\n\n";
-		std::cout << "\t\t\t You Lose! Press 'R' to play again.\n";
 	}
 }

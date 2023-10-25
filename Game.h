@@ -17,4 +17,13 @@ public:
 	void Reset();
 	void ResetBall();
 	void CheckCollision();
+
+	enum GameState
+	{
+		PLAYING,
+		WON,
+		LOST
+	};
+
+	GameState currentState = PLAYING;
 };
