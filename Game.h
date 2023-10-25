@@ -1,7 +1,7 @@
 #pragma once
 #include "Box.h"
 #include "Ball.h"
-#include <vector>									// Adding in vector
+#include <vector>									// Adds in vector for our vector of bricks
 
 class Game
 {
