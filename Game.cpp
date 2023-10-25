@@ -1,4 +1,4 @@
-hg#include "stdafx.h"
+#include "stdafx.h"
 #include "Game.h"
 
 Game::Game()
@@ -20,12 +20,22 @@ void Game::Reset()
 	ResetBall();
 
 	// TODO #2 - Add this brick and 4 more bricks to the vector
-	brick.width = 10;
-	brick.height = 2;
-	brick.x_position = 0;
-	brick.y_position = 5;
-	brick.doubleThick = true;
-	brick.color = ConsoleColor::DarkGreen;
+	bricks.clear();															// clears any bricks in the vector before looping
+
+	for (int index = 0; index < 5; ++index)									// loops 5 times through to create 5 bricks
+	{
+		Box createNewBrick;													// declares a new box object to represent our bricks
+
+		createNewBrick.width = 10;
+		createNewBrick.height = 2;
+		createNewBrick.x_position = 0;
+		createNewBrick.y_position = 5;
+		createNewBrick.doubleThick = true;
+		createNewBrick.color = ConsoleColor::DarkGreen;
+
+		bricks.push_back(createNewBrick);									// Adds the created brick to our brick vector
+	}
+
 }
 
 void Game::ResetBall()
