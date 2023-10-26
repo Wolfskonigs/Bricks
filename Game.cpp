@@ -62,8 +62,11 @@ bool Game::Update()
 		ball.moving = !ball.moving;
 
 	if (GetAsyncKeyState('R') & 0x1)
+	{
 		Reset();
-
+		Console::Clear();
+	}
+		
 	ball.Update();
 	CheckCollision();
 	return true;
