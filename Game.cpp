@@ -63,6 +63,7 @@ bool Game::Update()
 
 	if (GetAsyncKeyState('R') & 0x1)
 	{
+		currentState = PLAYING;
 		Reset();
 		Console::Clear();
 	}
@@ -77,6 +78,11 @@ void Game::Render() const
 {
 	Console::Lock(true);
 	Console::Clear();
+
+	if (currentState == PLAYING)
+	{
+		std::cout << "Press 'SPACE' to play.\n";
+	}
 
 	paddle.Draw();
 	ball.Draw();
