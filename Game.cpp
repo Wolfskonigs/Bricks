@@ -63,7 +63,7 @@ bool Game::Update()
 
 	if (GetAsyncKeyState('R') & 0x1)
 	{
-		currentState = PLAYING;
+		currentState = PLAYING;														// Added in functionality for the playing condition and console clear.
 		Reset();
 		Console::Clear();
 	}
